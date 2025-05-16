@@ -1,0 +1,62 @@
+\section{Background} \label{sec:background}
+This section aims to outline the design of design LT-PEM cellss and stack, discuss mechanisms governing performance limiting water and thermal effects, and outline approaches previously used in the preliminary design of LT-PEMFC aircraft. The objective is to make clear the impact of capturing physical processes relevant at high current density operation of the fuel cell power system at take-off.
+
+\subsection{Cell}
+Hydrogen fuel cells utilise a reaction between oxygen and hydrogen. At the cathode, gaseous oxygen is reduced to water, and at the anode gaseous hydrogen is oxidised to form H+ ions as per the half reactions given in equations \ref{eq:hor} and \ref{eq:orr}. An ionomer membrane facilitates the transport of protons between cathode and anode via an acidic electrolyte.
+\begin{align}
+	2\htwo             & \rightarrow 4 \hp + 4 \electron \label{eq:hor} \\
+	\otwo + 4\electron & \rightarrow 2\water \label{eq:orr}
+\end{align}
+To allow gaseous fuel to reach reaction sites, the electrodes are porous. The pores are infused with catalyst nanoparticles, typically platinum, often supported on carbon particles, and dispersed throughout the ionomer matrix. This structure increases the surface area available for reactions to occur, and facilitates the interaction of gaseous fuel, solid catalyst, and dissolved ion, known as three phase contact.
+% Each LT-PEM cell has the following;
+% \begin{center}
+% 	\begin{tabularx}{\textwidth}{
+% 		@{}>{\raggedright\arraybackslash}p{8.5em}>{\raggedright\arraybackslash}X@{}		}
+% 		Membrane             & Enables transport of protons and liquid water.                                     \\
+% 		Catalyst Layers      & Provides sites for the reaction to occur and facilitates three phase contact.      \\
+% 		Gas Diffusion Layers & Distributes reactant gasses and conducts current.                                  \\
+% 		Bipolar plate        & Supplies reactants, removes heat, conducts charge, and transfers mechanical loads. \\
+% 	\end{tabularx}
+% \end{center}
+%
+\subsection{Stack}
+LT-PEM cells are connected in series to increase operating voltage and power. This is achieved using bipolar plate to “sandwich” cell assemblies. Bipolar plates serve a number of functions:
+\begin{itemize}
+	\item Conducting current from anode to cathode between cells.
+	\item Evenly distributing reactant gasses across the cell.
+	\item Removing heat via gas supply and internal cooling channels.
+	\item Transferring and resisting mechanical loads.
+	\item Providing structural support to the flexible cell assembly.
+\end{itemize}
+The design of the bipolar plate determines the performance of a wide range of systems. Larger gas channels aid feed flow convection and limit pressure losses, easing performance requirements on fluid supply systems, whilst simultaneously reducing the area available to conduct charge and thickening the plate which increases Ohmic losses, cell mass, and rigidity. Small gas channels provide the inverse benefits and limitations. For any proposed bipolar plate design solution there is therefore a multi-objective trade off between gas supply, structural, mass, water, thermal, and electrical objectives. For these reasons, bipolar plate design is a common area of study in fuel cell design optimisation, and a range of strategies have been applied to investigate their design.
+
+\subsection{Water \& Thermal Effects}
+In a LTPEMFC, there exists opposing needs to hydrate the membrane and avoid flooding pores, which may be controlled by varying the humidification of the reactant flows. Under high humidification, water may condense and flood pores in the electrodes, even at low current densities. This is exacerbated at the cathode, where the Oxygen Reduction Reaction (ORR) forms water. The resulting impedance of oxygen transport to the cathode causes in a reduction of the cell voltage due to low local oxygen availability.
+
+Under low humidification there is the potential for membrane drying, which prevents the transport of protons across the membrane, and limits reaction rates at the electrodes. High temperatures in the electrode result in an increased reactant gas saturation pressure, driving greater evaporation and increasing the mass of water removed. This can mitigate against flooding or accelerate drying depending on the operating conditions of the cell. High temperature gradients in the cathode and the adjacent GDL can induce flooding as the saturation pressure of the reactant decreases as the gas cools. In this case simultaneous flooding and drying is possible, as water is removed from the membrane and deposited elsewhere.
+
+These transient effects may significantly impact cell power output when operating at high current densities. They are hyper-relevant in the design of PEMFC systems for aircraft as they threaten the ability to provide sufficient power at take-off where the highest power demand is traditionally imposed, and the lowest temperature difference is available to the Thermal Management System (TMS) for heat rejection. The ability of the TMS and Water Management Systems (WMS) to enable predictable high current density operation will be key to safe and reliable operation of LT-PEMFC aircraft. Challenges arise when considering traditional aircraft design objectives such as lightweighting and fuel consumption, which will incentivise smaller stacks, smaller TMS and WMS, and higher current densities.
+
+\subsection{Aircraft Design}
+Preliminary design studies of LT-PEMFC aircraft have been presented in literature. Massaro \etal \cite{chiara_massaro_optimal_2024} and Nicolay \etal \cite{nicolay_conceptual_2021} present studies of regional and general aviation aircraft respectively . Their works use a semi-empirical, quasi-one-dimensional, steady-state, isothermal model presented by Kulikovsky \cite{kulikovsky_regimes_2010, kulikovsky_physicallybased_2013}.
+Datta \cite{datta_pem_2021} and Kasim \etal. \cite{abu_kasim_performance_2022} present studies on eVTOL and commuter aircraft respectively, whilst Schemer et al. [] considers GA, commuter, regional, and short to medium range aircraft \cite{schmelcher_hydrogen_2022}. All use semi-empirical, zero-dimensional, steady-state, isothermal models.
+The models these studies rely on calibration against representative data to capture multi-scale effects. In the cases of Massaro, Nicolay, Datta, and [check others], calibration is conducted against experiments on 25cm$^2$ Membrane Electrode Assemblies (MEAs) with ideal stoichiometry and fuel excesses, while the studies consider designs with active areas of $\mathcal{O}(1000)$ cm$^2$. This prepresents ideal fuel cell operating conditions, suggesting that the calibrated models may overestimate system performance.
+\begin{center}
+	\begin{table}
+		\caption{A listing of the key features from the discussed preliminary LT-PEMFC aircraft design studies.}
+		\newcolumntype{Y}{>{\centering\arraybackslash}X}
+		\begin{tabularx}{\linewidth}{Y Y Y Y Y Y}
+			\toprule
+			Author(s)      & Massaro \etal & Nicolay \etal & Datta   & Kasim \etal & Schmelcher \\
+			\midrule
+			Dimension      & Quasi-One     & Quasi-One     & Zero    & Zero        & Zero       \\
+			TMS            & Yes           & No            & Yes     & No          & Yes        \\
+			WMS            & No            & No            & No      & Yes         & No         \\
+			Isothermal     & Yes           & Yes           &         &             &            \\
+			Dynamic        & No            & No            & No      & No          & No         \\
+			Aircraft Class & Regional      & General       & General & Commuter    & Many       \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:studies}
+	\end{table}
+\end{center}
