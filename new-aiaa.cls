@@ -25,7 +25,7 @@
 \RequirePackage{newtxtext,newtxmath}
 
 \RequirePackage[letterpaper,margin=1in]{geometry}
-\RequirePackage{enumitem}
+\RequirePackage[inline]{enumitem}
 \setlist{labelindent=\parindent,leftmargin=*,nosep}
 \setlist[enumerate]{label={\arabic*)}}
 
@@ -103,5 +103,5 @@
 \renewcommand{\bibfont}{\small}
 
 \RequirePackage[hyphens]{url}
-\RequirePackage{hyperref}
+\RequirePackage[hidelinks]{hyperref}
 
