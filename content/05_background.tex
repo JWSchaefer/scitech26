@@ -15,12 +15,12 @@ This subsection will explore modeling approaches of existing studies to establis
 
 Commonly, LT-PEMFC aircraft design studies use semi-empirical, one- or zero-dimensional, steady-state, isothermal  models to evaluate the power performance of a cell \cite{nicolayConceptualDesignOptimization2021b,  abukasimPerformanceFailureAnalysis2022a, ngHydrogenFuelCells2019a, parkRefinedSizingMethod2022, chiaramassaroOptimalDesignHydrogenpowered2024a, schmelcherHydrogenFuelCells2022a, sparanoFutureTechnologicalPotential2023a}.
 This approach is viable when considering aircraft with  power requirements on a scale similar to commercially available systems developed for automotive use as it allows for calibration against experimental data from representative systems.
-This approach has been used to efficiently investigate conceptual design of novel electric GA aircraft \cite{nicolayConceptualDesignOptimization2021b}, and propose detailed system designs for retrofitting onboard existing commuter aircraft \cite{abukasimPerformanceFailureAnalysis2022a}.
+This approach has been used to efficiently investigate the conceptual design of novel electric GA aircraft \cite{nicolayConceptualDesignOptimization2021b}, and propose detailed system designs for retrofitting onboard existing commuter aircraft \cite{abukasimPerformanceFailureAnalysis2022a}.
 Problems arise when this approach is used to investigate the design of large scale systems.
-For example multiple studies considering regional aircraft use low-fidelity semi-empirical models calibrated against data from experiments considering cells with an active are of $\mathcal{O}(10)$ cm$^2$ operating at a steady state, under ideal stoichiometry, with a fuel excess, and in a laboratory setting \cite{chiaramassaroOptimalDesignHydrogenpowered2024a, schmelcherHydrogenFuelCells2022a}, whilst others use unpublished data \cite{sparanoFutureTechnologicalPotential2023a}.
+For example, multiple studies considering regional aircraft use low-fidelity semi-empirical models calibrated against data from experiments considering cells with an active area of $\mathcal{O}(10)$ cm$^2$ operating at a steady state, under ideal stoichiometry, with a fuel excess, and in a laboratory setting \cite{chiaramassaroOptimalDesignHydrogenpowered2024a, schmelcherHydrogenFuelCells2022a}, whilst others use unpublished data \cite{sparanoFutureTechnologicalPotential2023a}. %% Which studies
 These studies consider cells with an active area of $\mathcal{O}(1000)$ cm$^2$, introducing bias by neglecting the impact of area scaling on cell performance, resulting in an overestimate of system performance.
 The limitations imposed by low-fidelity models was recognised by Schr\"oder \etal in a study investigating a regional aircraft concept featuring distributed power and propulsion systems \cite{schroderOptimalDesignProton2024}.
-To begin addressing them a one-dimensional multi-phase cell model and detailed balance of plant models were developed and calibrated against existing LT-PEMFC systems.
+To begin addressing these limitations, a one-dimensional multi-phase cell model and detailed balance of plant models were developed and calibrated against existing LT-PEMFC systems.
 This allowed investigation into the optimal design of a megawatt scale battery hybridised LT-PEMFC system for regional aircraft with distributed propulsion.
 The commitment to validating against existing systems forced the selection of a distributed power system architecture to meet to the required power scales.
 This demonstrates the need for detailed modeling of LT-PEMFC systems at scale to enable performance assessment of alternative power system architectures and enable informed concept selection and preliminary design for future large LT-PEMFC aircraft.
@@ -56,7 +56,8 @@ This may threaten the ability of systems to provide sufficient power at take-off
 This is intensified under  traditional aircraft design objectives such as lightweighting and fuel consumption, which will incentivise smaller stacks, TMS, water management systems (WMS), and higher current densities.
 To justify this belief, we will introduce the basic physical processes governing key dynamic processes.
 
-In a LT-PEM cell, there exists opposing needs to hydrate the membrane and avoid flooding pores, which may be controlled by varying the humidification of the reactant flows. Under high humidification, water may condense and flood pores in the electrodes, even at low current densities.
+In a LT-PEM cell, there exist opposing needs to hydrate the membrane and avoid flooding pores, which may be controlled by varying the humidification of the reactant flows.
+Under high humidification, water may condense and flood pores in the electrodes, even at low current densities.
 This is exacerbated at the cathode, where the Oxygen Reduction Reaction (ORR) forms water.
 The resulting impedance of oxygen transport to the cathode causes in a reduction of the cell voltage due to low local oxygen availability.
 Under low humidification there is the potential for membrane drying, which prevents the transport of protons across the membrane, and limits reaction rates at the electrodes.
@@ -77,7 +78,7 @@ At the cathode, gaseous oxygen is reduced to water, and at the anode gaseous hyd
 An ionomer membrane facilitates the transport of protons between cathode and anode via an acidic electrolyte, while porous electrodes facilitate the transport of reactant gasses to the reaction sites.
 The electrode pores are infused with catalyst nanoparticles, typically platinum, often supported on carbon particles dispersed throughout the ionomer matrix.
 This structure increases the surface area available for reactions to occur, and facilitates the interaction of gaseous fuel, solid catalyst, and dissolved ion, known as three-phase contact.
-Together the gas diffusion layer (GDL), electrode, and membrane form the membrane electrode assembly (MEA).
+Together the GDL, electrode, and membrane form the membrane electrode assembly (MEA).
 MEA designs are complex, the chemical composition of the membrane, catalyst particle size distribution, GDL microstructure, and other factors of vastly different length scales all impact cell performance.
 \begin{align}
 	2\htwo             & \rightarrow 4 \hp + 4 \electron \label{eq:hor} \\
@@ -94,6 +95,7 @@ For any proposed bipolar plate design solution there is a multi-objective trade 
 Thickness and material requirements of bipolar plates mean they constitute a significant proportion of the stack mass.
 For these reasons, bipolar plate design is a common area of study in fuel cell design optimisation, and a range of strategies have been applied to improve their design \cite{liReviewBipolarPlates2005}.
 
+%Bop introductions
 The balance of plant comprises all systems required to monitor and control the operation of a fuel cell stack. This may include, but is not limited to; \begin{enumerate*}
 	\item Thermal management
 	\item Water management
@@ -102,7 +104,7 @@ The balance of plant comprises all systems required to monitor and control the o
 	\item Power Distribution
 \end{enumerate*}. It comprises a significant portion of the system mass and imposes a significant parasitic loss. Preliminary design studies that separate stack and BoP mass commonly propose systems where the two are comparable, or the BoP is multiples of that of the stack. \cite{schroderOptimalDesignProton2024, parkRefinedSizingMethod2022, schmelcherHydrogenFuelCells2022a}.
 There is currently significant uncertainty in the relative contributions of BoP systems to total mass;
-The distributed power architecture concept proposed by Schr\"oder \etal massed the TMS at 7.4\% of the system mass and the humidifiers at 16.1\% of system mass \cite{schroderOptimalDesignProton2024}.
+the distributed power architecture concept proposed by Schr\"oder \etal massed the TMS at 7.4\% of the system mass and the humidifiers at 16.1\% of system mass \cite{schroderOptimalDesignProton2024}.
 Conversely, the more conventional two-nacelle architecture proposed by Schmelcher massed the TMS at 44\%, with no consideration of WMS mass \cite{schmelcherHydrogenFuelCells2022a}.
 The level of detail in the modeling approaches of both works are sugnificant, as are their choices of power system architecture.
 The discrepancy in sizing of the BoP systems of reinforces the previous conclusions on the importance of detailed modeling when investigating optimal aircraft and power system design.
