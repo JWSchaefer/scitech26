@@ -1,27 +1,23 @@
 \section{Introduction}
 
-\lettrine{I}{mmediate} action is required if we are to limit anthropogenic warming to 2 °C by the year 2100 \cite{environment_emissions_2024}.
-As of 2021, aviation contributed an estimated 4\% of total warming, but projected growth in demand is expected to increase this to between 6 and 17\% by 2050 \cite{klower_quantifying_2021}.
+\lettrine{I}{mmediate} action is required if we are to limit anthropogenic warming to 2 °C by the year 2100 \cite{environmentEmissionsGapReport2024}.
+As of 2021, aviation contributed an estimated 4\% of total warming, but projected growth in demand is expected to increase this to between 6 and 17\% by 2050 \cite{klowerQuantifyingAviationsContribution2021}.
 Despite consistent incremental improvements in conventional aeroengine technology, there remain challenges with respect to the emission of carbon dioxide, nitrogen oxides, water, hydrocarbons, carbon monoxide, sulphur oxides, particulates, and other pollutants when relying on the combustion of hydrocarbon fuels.
-Consequently, there is interest in developing and adopting alternative energy vectors and power systems to facilitate transition away from fossil fuels towards clean aviation.
-Hydrogen fuel cells (FCs) offer a potential route to clean aviation at scale.
-Fuel cell systems generate electrical energy from hydrogen and oxygen emitting only water as a by-product, thus enabling electric aviation and zero emissions at the point of use.
-Low temperature proton exchange membrane (LT-PEM) fuel cells are a mature branch of current hydrogen fuel cell technology. They have been the focus of significant development since the early 2000s for automotive and civil applications due to their reliability and preferable dynamic characteristics relative to temperature (HT)-PEMFCs, and solid oxide fuel cells (SOFCs).
+Consequently, there is interest in developing and adopting alternative energy vectors and power systems to facilitate transition away from hydrocarbons and towards clean aviation.
+Hydrogen fuel cells offer a potential route to clean aviation at scale by producing electrical energy from hydrogen and oxygen emitting only water as a by-product, thus enabling electric aviation with zero emissions at the point of use.
+Low Temperature Proton Exchange Membrane (LT-PEM) fuel cells are a mature branch of current hydrogen fuel cell technology. They have been the focus of significant development since the early 2000s for automotive and civil applications due to their reliability and preferable dynamic characteristics relative to High Temperature (HT)-PEMFCs, and Solid Oxide Fuel Cells (SOFCs).
 
-There is currently a global effort to scale LT-PEMFC systems to meet the power requirements of large transport aircraft \cite{weeks_zeroavia_2025, retallack_commercial_2023, noauthor_newborn_nodate, wood_scalability_nodate}.
-This follows from a period in which academic institutions \cite{kallo_fuel_2013}, industrial bodies \cite{lapena-rey_first_2010}, and governmental organisations \cite{noll2004investigation} worked to demonstrate fuel cell powered Unmanned Aerial Vehicles (UAVs) and General Aviation (GA) aircraft.
-Despite the considerable knowledge gained from the application of LT-PEMFCs to small aircraft, and the existing wealth of experience in the automotive and civil sectors, there are  design, operation, and integration challenges unique to large aircraft that must be addressed before wider adoption becomes possible.
-For example, LT-PEMFC systems are complex and dynamical.
-Their multi-scale nature means that small-scale multi-physics effects can govern top level system performance.
-LT-PEMFC systems for large aircraft will be subject to extreme safety constraints and conflicting design objectives of minimal mass and maximal power and efficiency are expected to force high current density operation under take-off conditions and simultaneously reduce the ability of the thermal management and water management systems to mitigate against flooding, drying, and steep transient temperature gradients which threaten the ability of the cell to provide the required power at take-off. Careful study of these effects in proposed systems are necessary to ensure safe, efficient, and reliable operation, but is not present in existing preliminary design studies of LT-PEMFC aircraft.
-As such there are number of open questions that must be addressed to facilitate future design and certification of future LT-PEMFC aircraft.
-\begin{enumerate}
+There is currently a global effort to scale LT-PEMFC systems to meet the power requirements of large transport aircraft \cite{weeksZeroAviaReceivesFAA2025, retallackCommercialAircraftManufacturer2023, NEWBORNNExtGeneration, woodScalabilityHydrogenFuel}.
+This follows from a period in which academic institutions \cite{kalloFuelCellSystems2013}, industrial \cite{lapena-reyFirstFuelCellManned2010}, and governmental organisations \cite{noll2004investigation} worked to demonstrate fuel cell powered Unmanned Aerial Vehicles (UAVs) and General Aviation (GA) aircraft.
+Despite the considerable knowledge gained from the application of LT-PEMFCs to small aircraft, and the existing wealth of experience in the automotive and civil sectors, there are  design, integration, and operational challenges unique to large aircraft that must be addressed before wider adoption becomes possible.
+For example, LT-PEMFC systems for large aircraft will be subject to extreme safety constraints and conflicting design objectives of minimal mass, maximal power, and maximal efficiency. This is expected to force high current density operation under take-off conditions and simultaneously reduce the ability of the thermal management and water management systems to mitigate against flooding, drying, and steep transient temperature gradients which threaten the ability of the cell to provide the required power at take-off.
+Careful study of these effects in proposed systems are necessary to ensure safe, efficient, and reliable operation, but is not present in existing preliminary design studies.
+There are therefore many open questions that must be addressed to enable design and certification of future large LT-PEMFC aircraft, of which the following will be considered; \begin{enumerate*}
 	\item Which, if any, dynamic effects threaten the safe operation of future LT-PEMFC power systems under take-off conditions.
-	\item How should LT-PEMFC stack and balance of plant systems be designed and scaled to efficiently provide the required power.
+	\item How should LT-PEMFC stack and balance of plant systems be designed and scaled to efficiently power large aircraft.
 	\item How do top level integration and architectural decisions impact the optimal LT-PEMFC power system design and vice versa.
-\end{enumerate}
-To address these questions the authors are currently developing models and methods to efficiently leverage multi-scale and multi-physics effects on the dynamic performance of LT-PEMFC power systems.
-The following sections will aim to outline the relevant background to, and proposed methodology of, these models and methods.
-Section \ref{sec:background} will provide a background for fuel cell stack design and operation, providing detail on the physical effects limiting LT-PEMFC performance at high current densities.
-Then, section \ref{sec:method} will introduce the proposed cell models, surrogate modelling approach, and existing dynamic system modelling framework.
+\end{enumerate*}
+
+In this context, we propose a modelling and methodological framework to capture dynamic multi-scale and multi-physics phenomena and efficiently explore performance characteristics of LT-PEMFC systems as they scale to meet intense specific power, mass, and safety requirements.
+We aim to use this to address challenges in the design, integration, and operation of LT-PEMFC power systems for large future aircraft.
 
