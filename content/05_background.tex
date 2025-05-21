@@ -1,6 +1,6 @@
 \section{Background} \label{sec:background}
 To design safe, efficient, and reliable LT-PEMFC aircraft, it is necessary to understand the ability of the systems onboard to meet aircraft power requirements.
-The complex nature of LT-PEMFC power systems necessitates detailed computational modelling of the cell, stack, and balance of plant to accurately evaluate the system response.
+The complex nature of LT-PEMFC power systems necessitates detailed computational modelling of the cell, stack, and Balance of Plant (BoP) to accurately evaluate the system response.
 Existing preliminary design studies considering LT-PEMFC powered aircraft investigate design challenges for aircraft of differing scales.
 Typically, these rely on low fidelity models calibrated against existing stack designs to quickly explore the design space.
 Reliance on low-fidelity models limits the ability of these approaches to consider mass transport, thermal, and hydration effects and therefore investigate stack and system scaling.
@@ -47,7 +47,7 @@ This demonstrates the need for detailed modeling of LT-PEMFC systems at scale to
 	\end{table}
 \end{center}
 
-\subsection{Dynamic Effects} \label{sec:dyn}
+\subsection{Dynamic Effects} \label{sec:effects}
 Currently, there is limited consideration for the impact of dynamic effects on the performance of proposed LT-PEMFC systems.
 This in spite of the fact that the preferable dynamic response of LT-PEM cells has helped motivate their development and thereby the current maturity and viability for use in aviation.
 Dynamic system response has been considered for eVTOL design using a reduced order model to capture LT-PEMFC system transients via a representative circuit \cite{ngHydrogenFuelCells2019a}, however in the context of large aircraft, there are no studies known the authors that consider dynamic effects.
@@ -63,7 +63,7 @@ The resulting impedance of oxygen transport to the cathode causes in a reduction
 Under low humidification there is the potential for membrane drying, which prevents the transport of protons across the membrane, and limits reaction rates at the electrodes.
 High temperatures in the electrode result in an increased reactant gas saturation pressure, driving greater evaporation and increasing the mass of water removed.
 This can mitigate against flooding or accelerate drying depending on the operating conditions of the cell.
-High temperature gradients in the cathode and the adjacent GDL can induce flooding as the saturation pressure of the reactant decreases in a non-linear fashion as the gas cools.
+High temperature gradients in the cathode and the adjacent Gas Diffusion Layer (GDL) can induce flooding as the saturation pressure of the reactant decreases in a non-linear fashion as the gas cools.
 If the saturation decreases below the partial pressure of the water vapour, liquid water condenses.
 This typically occurs in the GDL or channels, blocking the transport of reactants and causing losses due to reduced local reactant concentration.
 Simultaneous flooding and drying is possible under high temperatures and steep temperature gradients, caused by high current density operation, as water is removed from the membrane and deposited elsewhere.
@@ -85,7 +85,7 @@ MEA designs are complex, the chemical composition of the membrane, catalyst part
 	\otwo + 4\electron & \rightarrow 2\water \label{eq:orr}
 \end{align}
 To increase operating power and voltage, cells are connected in series.
-Joining two cells is the bipolar plate, which serve a number of functions.
+Joining two cells is the bipolar plate, which serves a number of functions.
 Beyond facilitating electrical connection between the cathode and anode of adjacent cells, bipolar plates distribute gas across the GDL, remove heat from the system through internal coolant flow, transfer and resist mechanical loads, and provide structural support to the GDL, electrodes, and membrane.
 The design of the bipolar plate is therefore tightly coupled with the performance of the balance of plant subsystems.
 Larger feed flow and coolant flow channels aid convection reducing pressure losses and easing performance requirements on fluid supply systems.
@@ -95,7 +95,6 @@ For any proposed bipolar plate design solution there is a multi-objective trade 
 Thickness and material requirements of bipolar plates mean they constitute a significant proportion of the stack mass.
 For these reasons, bipolar plate design is a common area of study in fuel cell design optimisation, and a range of strategies have been applied to improve their design \cite{liReviewBipolarPlates2005}.
 
-%Bop introductions
 The balance of plant comprises all systems required to monitor and control the operation of a fuel cell stack. This may include, but is not limited to; \begin{enumerate*}
 	\item Thermal management
 	\item Water management
