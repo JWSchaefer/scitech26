@@ -1,26 +1,27 @@
 \section{Background} \label{sec:background}
 To design safe, efficient, and reliable LT-PEMFC aircraft, it is necessary to understand the ability of the systems onboard to meet aircraft power requirements.
-The complex nature of LT-PEMFC power systems necessitates detailed computational modelling of the cell, stack, and Balance of Plant (BoP) to accurately evaluate the system response.
+The complex nature of LT-PEMFC power systems necessitates detailed computational modelling of the cell, stack, and BoP to accurately evaluate the system response.
 Existing preliminary design studies considering LT-PEMFC powered aircraft investigate design challenges for aircraft of differing scales.
 Typically, these rely on low fidelity models calibrated against existing stack designs to quickly explore the design space.
 Reliance on low-fidelity models limits the ability of these approaches to consider mass transport, thermal, and hydration effects and therefore investigate stack and system scaling.
 To position our work, this section will provide an overview of the existing preliminary design study methodologies in subsection \ref{sec:lit}.
-We will then introduce the key physical processes limiting cell performance under the extreme operating in subsection \ref{sec:effects}.
-Finally we will provide an overview of cell, stack, and balance of plant operation and design to contextualise the system design problem in subsection \ref{sec:design}.
+We will then introduce the key physical processes limiting cell performance under at high current densities in Subsection \ref{sec:effects}.
+Finally, we will provide an overview of cell, stack, and BoP operation and design to contextualise the system design problem in Subsection \ref{sec:design}.
 
 \subsection{Aircraft Design} \label{sec:lit}
 Existing preliminary design studies considering LT-PEMFC aircraft have commonly considered a limited range of physical phenomena affecting system performance.
 This is due to the computational cost associated with; \begin{enumerate*} \item high fidelity modelling of LT-PEM cells and systems models \item the large number of model evaluations required to characterise a given design\end{enumerate*}.
-This subsection will explore modeling approaches of existing studies to establish common practices and identify knowledge gaps.
+This subsection will explore modelilng approaches of existing studies to establish common practices and identify knowledge gaps.
 
 Commonly, LT-PEMFC aircraft design studies use semi-empirical, one- or zero-dimensional, steady-state, isothermal  models to evaluate the power performance of a cell \cite{nicolayConceptualDesignOptimization2021b,  abukasimPerformanceFailureAnalysis2022a, ngHydrogenFuelCells2019a, parkRefinedSizingMethod2022, chiaramassaroOptimalDesignHydrogenpowered2024a, schmelcherHydrogenFuelCells2022a, sparanoFutureTechnologicalPotential2023a}.
-This approach is viable when considering aircraft with  power requirements on a scale similar to commercially available systems developed for automotive use as it allows for calibration against experimental data from representative systems.
-This approach has been used to efficiently investigate the conceptual design of novel electric GA aircraft \cite{nicolayConceptualDesignOptimization2021b}, and propose detailed system designs for retrofitting onboard existing commuter aircraft \cite{abukasimPerformanceFailureAnalysis2022a}.
+This approach is viable when considering aircraft with power requirements on a scale similar to commercially-available systems developed for automotive use, as it allows for calibration against experimental data from representative systems.
+This approach has been used to efficiently investigate the conceptual design of novel electric GA aircraft \cite{nicolayConceptualDesignOptimization2021b}, and to propose detailed system designs to retrofit onboard existing commuter aircraft \cite{abukasimPerformanceFailureAnalysis2022a}.
 Problems arise when this approach is used to investigate the design of large scale systems.
+
 For example, multiple studies considering regional aircraft use low-fidelity semi-empirical models calibrated against data from experiments considering cells with an active area of $\mathcal{O}(10)$ cm$^2$ operating at a steady state, under ideal stoichiometry, with a fuel excess, and in a laboratory setting \cite{chiaramassaroOptimalDesignHydrogenpowered2024a, schmelcherHydrogenFuelCells2022a}, whilst others use unpublished data \cite{sparanoFutureTechnologicalPotential2023a}. %% Which studies
 These studies consider cells with an active area of $\mathcal{O}(1000)$ cm$^2$, introducing bias by neglecting the impact of area scaling on cell performance, resulting in an overestimate of system performance.
 The limitations imposed by low-fidelity models was recognised by Schr\"oder \etal in a study investigating a regional aircraft concept featuring distributed power and propulsion systems \cite{schroderOptimalDesignProton2024}.
-To begin addressing these limitations, a one-dimensional multi-phase cell model and detailed balance of plant models were developed and calibrated against existing LT-PEMFC systems.
+To begin addressing these limitations, a one-dimensional multi-phase cell model and detailed BoP models were developed and calibrated against existing LT-PEMFC systems.
 This allowed investigation into the optimal design of a megawatt scale battery hybridised LT-PEMFC system for regional aircraft with distributed propulsion.
 The commitment to validating against existing systems forced the selection of a distributed power system architecture to meet to the required power scales.
 This demonstrates the need for detailed modeling of LT-PEMFC systems at scale to enable performance assessment of alternative power system architectures and enable informed concept selection and preliminary design for future large LT-PEMFC aircraft.
@@ -48,9 +49,9 @@ This demonstrates the need for detailed modeling of LT-PEMFC systems at scale to
 \end{center}
 
 \subsection{Dynamic Effects} \label{sec:effects}
-Currently, there is limited consideration for the impact of dynamic effects on the performance of proposed LT-PEMFC systems.
-This in spite of the fact that the preferable dynamic response of LT-PEM cells has helped motivate their development and thereby the current maturity and viability for use in aviation.
+Currently, there is limited consideration for the impact of dynamic effects on the performance of proposed LT-PEMFC systems, despite the fact that the preferable dynamic response of LT-PEM cells has helped motivate their development and thereby the current maturity and viability for use in aviation.
 Dynamic system response has been considered for eVTOL design using a reduced order model to capture LT-PEMFC system transients via a representative circuit \cite{ngHydrogenFuelCells2019a}, however in the context of large aircraft, there are no studies known the authors that consider dynamic effects.
+
 We believe that dynamic effects have the potential to significantly impact the performance of LT-PEMFC systems, particularly under high current density operation.
 This may threaten the ability of systems to provide sufficient power at take-off where the highest power demand is traditionally imposed, and the lowest temperature difference is available to the Thermal Management System (TMS) for heat rejection.
 This is intensified under  traditional aircraft design objectives such as lightweighting and fuel consumption, which will incentivise smaller stacks, TMS, water management systems (WMS), and higher current densities.
@@ -67,8 +68,8 @@ High temperature gradients in the cathode and the adjacent Gas Diffusion Layer (
 If the saturation decreases below the partial pressure of the water vapour, liquid water condenses.
 This typically occurs in the GDL or channels, blocking the transport of reactants and causing losses due to reduced local reactant concentration.
 Simultaneous flooding and drying is possible under high temperatures and steep temperature gradients, caused by high current density operation, as water is removed from the membrane and deposited elsewhere.
-We believe that the design of the cell, stack, and balance of plant will be influenced by the abiltiy of the TMS and Water Management Systems (WMS) to manage flooding, drying, and temperature gradients at take-off.
-To investigate this belief detailed dynamic modeling of the cell, stack, TMS, and WMS is required, including high-fidelity models that capture these effects.
+We believe that the design of the cell, stack, and BoP will be influenced by the abiltiy of the TMS and WMS to manage flooding, drying, and temperature gradients at take-off.
+To investigate this belief detailed dynamic modelling of the cell, stack, TMS, and WMS is required, including high-fidelity models that capture these effects.
 
 \subsection{Cell, Stack, \& Balance of Plant} \label{sec:design}
 To formulate the design problem we aim to investigate using our proposed methodology, we must introduce the design of LT-PEMFC power systems. This section aims to provide a brief overview of these components and outline their influence on system performance.
@@ -85,17 +86,16 @@ MEA designs are complex, the chemical composition of the membrane, catalyst part
 	\otwo + 4\electron & \rightarrow 2\water \label{eq:orr}
 \end{align}
 To increase operating power and voltage, cells are connected in series.
-Joining two cells is the bipolar plate, which serves a number of functions.
+Joining two cells is the bipolar plate, which serves several functions.
 Beyond facilitating electrical connection between the cathode and anode of adjacent cells, bipolar plates distribute gas across the GDL, remove heat from the system through internal coolant flow, transfer and resist mechanical loads, and provide structural support to the GDL, electrodes, and membrane.
-The design of the bipolar plate is therefore tightly coupled with the performance of the balance of plant subsystems.
-Larger feed flow and coolant flow channels aid convection reducing pressure losses and easing performance requirements on fluid supply systems.
-Simultaneously reducing the area available to conduct charge, thickening the plate which increases Ohmic losses, cell mass, and rigidity.
+The design of the bipolar plate is therefore tightly coupled with the performance of the BoP subsystems.
+Larger feed flow and coolant flow channels aid convection, reducing pressure losses and easing performance requirements on fluid supply systems whilst simultaneously reducing the area available to conduct charge, thickening the plate thereby increasing Ohmic losses, cell mass, and rigidity.
 Smaller channels provide the inverse benefits and limitations.
-For any proposed bipolar plate design solution there is a multi-objective trade off between gas supply, structural, mass, water, thermal, and electrical objectives.
+For any proposed bipolar plate design solution there is a multi-objective trade-off between gas supply, structural, mass, water, thermal, and electrical objectives.
 Thickness and material requirements of bipolar plates mean they constitute a significant proportion of the stack mass.
 For these reasons, bipolar plate design is a common area of study in fuel cell design optimisation, and a range of strategies have been applied to improve their design \cite{liReviewBipolarPlates2005}.
 
-The balance of plant comprises all systems required to monitor and control the operation of a fuel cell stack. This may include, but is not limited to; \begin{enumerate*}
+The BoP comprises all systems required to monitor and control the operation of a fuel cell stack. This may include, but is not limited to; \begin{enumerate*}
 	\item Thermal management
 	\item Water management
 	\item Fuel Supply
@@ -105,5 +105,5 @@ The balance of plant comprises all systems required to monitor and control the o
 There is currently significant uncertainty in the relative contributions of BoP systems to total mass;
 the distributed power architecture concept proposed by Schr\"oder \etal massed the TMS at 7.4\% of the system mass and the humidifiers at 16.1\% of system mass \cite{schroderOptimalDesignProton2024}.
 Conversely, the more conventional two-nacelle architecture proposed by Schmelcher massed the TMS at 44\%, with no consideration of WMS mass \cite{schmelcherHydrogenFuelCells2022a}.
-The level of detail in the modeling approaches of both works are sugnificant, as are their choices of power system architecture.
+The level of detail in the modeling approaches of both works are significant, as are their choices of power system architecture.
 The discrepancy in sizing of the BoP systems of reinforces the previous conclusions on the importance of detailed modeling when investigating optimal aircraft and power system design.

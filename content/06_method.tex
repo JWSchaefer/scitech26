@@ -11,10 +11,11 @@ To address the identified gaps and support the goal of designing efficient, reli
 The following subsection will outline the models and methods that comprise the proposed framework.
 
 \subsection{Cell \& Stack Modelling}
-High-fidelity fuel cell models are commonly posed as sets of coupled partial differential equations (PDEs) expressing conservation laws for mass, momentum, species, charge, and energy.
+High-fidelity fuel cell models are commonly posed as sets of coupled Partial Differential Equations (PDEs) expressing conservation laws for mass, momentum, species, charge, and energy.
 Domains within the cell such as the channel, GDL, catalyst, and membrane are differentiated by their source terms. The resulting PDEs are solved over a discretised domain using either Finite Element Methods (FEMs) or Finite Volume Methods (FVMs).
 FEMs offer simplified treatment of higher coupling, simpler incorporation of complex geometries, and easier adaptation to higher order methods, whilst FVMs ensure strict adherence to the conservation laws.
-There has been a longstanding reluctance in the fuel cell modelling comunity to open source their fuel cell models.
+
+There has been a longstanding reluctance in the fuel cell modelling community to open-source fuel cell models.
 This has changed in the last few years with a growing number of open source models being released and maintained \cite{vetterFreeOpenReference2019, secanellOpenFCSTOpenSourceMathematical2014, zhangOpenFuelCell2NewComputational2024,  koneOpenSourceToolboxPEM2018, gassAlphaPEMOpensourceDynamic2025}.
 This has been fuelled by continued improvements in conventional and parallel computing hardware.
 We aim to use these open source models to build a set of parametric LT-PEM cell and stacks.
@@ -51,7 +52,7 @@ Where $\beta$ is the approximate solution to
 \begin{equation}
 	\beta \tan{\frac{\beta}{2}} = \wt{j}_0, \quad 0 \le \beta < \pi
 \end{equation}
-An assumption of constant oxygen concentration gradient in the GDL enabled a substitution of equation \ref{eq:oxyconc} equation \ref{eq:etad} to reframe the problem in terms of the oxygen concentration in the channel $c_h$ and limiting current density due to oxygen transport in the GDL $j_{\text{lim}}$. The Tafel law was used to account for oxygen transport losses in the GDL, yielding the final GDL, and CCL overpotential model igen in equation \ref{eq:kulfull}.
+An assumption of constant oxygen concentration gradient in the GDL enabled a substitution of equation \ref{eq:oxyconc} equation \ref{eq:etad} to reframe the problem in terms of the oxygen concentration in the channel $c_h$ and limiting current density due to oxygen transport in the GDL $j_{\text{lim}}$. The Tafel law was used to account for oxygen transport losses in the GDL, yielding the final GDL, and CCL overpotential model given in equation \ref{eq:kulfull}.
 
 \begin{equation}
 	\wt{c}_1 = \wt{c}_h \left(1 - \frac{\wt{j}_0}{\wt{j}_{\text{lim}}\wt{c}_h}\right)\label{eq:oxyconc}
@@ -104,13 +105,13 @@ This is a complex task, and computationally expensive, particularly when conside
 The wide range of physics captured and high computational cost of these approaches make them suitable in providing the highest-fidelity model.
 
 \subsection{Surrogate Modelling}
-We propose the use of a multi-fidelity Gaussian Process (GP) and non-myopic active learning method to learn a latent representation of the stack current density $i$ as a function of open-circuit normalised mean cell voltage $v$ given some system design parameters $\bm{x}_0, \bm{x}_{\text{BoP}}, \bm{x}_{\text{Stack}}$. This will provide an fast, explainable, and uncertainty aware surrogate model that will allow us to leverage high fidelity physics simulations in a dynamic fuel cell system model.
+We propose the use of a multi-fidelity Gaussian Process (GP) and non-myopic active learning method to learn a latent representation of the stack current density $i$ as a function of open-circuit normalised mean cell voltage $v$ given some system design parameters $\bm{x}_0, \bm{x}_{\text{BoP}}, \bm{x}_{\text{Stack}}$. This will provide a fast, explainable, and uncertainty aware surrogate model that will allow us to leverage high fidelity physics simulations in a dynamic fuel cell system model.
 
 \subsection{Multi-fidelity Bayesian Optimization}
 
-Multi-fidelity Bayesian optimization (MFBO) is a powerful strategy for optimizing expensive black-box functions when multiple approximations or models of varying accuracy and computational cost are available. In many real-world applications, high-fidelity evaluations of an objective function can be prohibitively expensive or time-consuming, while lower-fidelity models provide cheaper but less accurate information. MFBO leverages this hierarchy by intelligently balancing evaluations across fidelity levels to achieve efficient global optimization with minimal computational expense. The core components of MFBO are a multifidelity surrogate model, which approximates the objective function across fidelity levels, and an acquisition function, which guides the selection of new sampling points and fidelity levels to efficiently improve the objective.
+Multi-fidelity Bayesian Optimization (MFBO) is a powerful strategy for optimizing expensive black-box functions when multiple approximations or models of varying accuracy and computational cost are available. In many real-world applications, high-fidelity evaluations of an objective function can be prohibitively expensive or time-consuming, while lower-fidelity models provide cheaper but less accurate information. MFBO leverages this hierarchy by intelligently balancing evaluations across fidelity levels to achieve efficient global optimization with minimal computational expense. The core components of MFBO are a multifidelity surrogate model, which approximates the objective function across fidelity levels, and an acquisition function, which guides the selection of new sampling points and fidelity levels to efficiently improve the objective.
 
-In this work, we adopt the non-myopic multifidelity Bayesian optimization (NM2-BO) algorithm \cite{DiFioreMaininiNM2BO}. NM2-BO integrates a multifidelity Gaussian process (MF-GP) surrogate model with a non-myopic acquisition function that considers not only immediate gains but also the expected future benefits over a two-step lookahead horizon. This approach frames the optimization as a sequential decision-making process under uncertainty, enabling more informed and effective sampling strategies compared to myopic single-step methods.
+In this work, we adopt the Mon-Myopic multi-fidelity Bayesian Optimization (NM2-BO) algorithm \cite{DiFioreMaininiNM2BO}. NM2-BO integrates a Multi-Fidelity Gaussian Process (MF-GP) surrogate model with a non-myopic acquisition function that considers not only immediate gains but also the expected future benefits over a two-step lookahead horizon. This approach frames the optimization as a sequential decision-making process under uncertainty, enabling more informed and effective sampling strategies compared to myopic single-step methods.
 
 The following sections present in detail the components of NM2-BO: first, the multifidelity Gaussian process surrogate used to model the objective function across multiple fidelity levels (Section \ref{s:MFGP}); second, the non-myopic multifidelity acquisition function which evaluates sampling decisions by maximizing the expected cumulative reward over a two-step horizon (Section \ref{s:NMAF}).
 
@@ -175,7 +176,7 @@ The posterior mean $\MeanFunGP^{(\LevFid)}(\DesignVar)$ serves as the predictive
 \subsubsection{Non-Myopic Multi-fidelity Acquisition Function}
 \label{s:NMAF}
 
-The non-myopic multif-idelity acquisition function is designed to maximize the cumulative reward achievable over a two-step horizon by evaluating a given design configuration \(\DesignVar\) at a specified fidelity level \(\LevFid\). This is accomplished by framing the multi-fidelity Bayesian optimization (MFBO) process as the evolution of a dynamic system under uncertainty, where the objective is to guide decision-making towards a predefined goal \cite{DiFioreMaininiNM2BO}. In this context, MFBO can be viewed as comprising: (i) a dynamic system represented by a probabilistic surrogate model that integrates objective function models across multiple fidelity levels, (ii) system dynamics that describe how the system state changes following a decision on design and fidelity level, and (iii) a metric evaluating the quality of decisions over a two-step horizon with respect to the goal.
+The non-myopic multi-fidelity acquisition function is designed to maximize the cumulative reward achievable over a two-step horizon by evaluating a given design configuration \(\DesignVar\) at a specified fidelity level \(\LevFid\). This is accomplished by framing the MFBO process as the evolution of a dynamic system under uncertainty, where the objective is to guide decision-making towards a predefined goal \cite{DiFioreMaininiNM2BO}. In this context, MFBO can be viewed as comprising: (i) a dynamic system represented by a probabilistic surrogate model that integrates objective function models across multiple fidelity levels, (ii) system dynamics that describe how the system state changes following a decision on design and fidelity level, and (iii) a metric evaluating the quality of decisions over a two-step horizon with respect to the goal.
 %
 This evolution can be formulated as a dynamic programming (DP) problem \cite{Bertsekas1995, Powell2007}, where the goal is to derive an optimal policy selecting the design point and fidelity level to maximize the expected cumulative reward over two future steps.
 
@@ -254,7 +255,7 @@ Where \(\bm{s}_k\) is the system state vector for a generic step \(k\), \(\bm{g}
 	\end{figure}
 \end{center}
 As outlined in Section \ref{sec:background}, detailed modeling of the thermal and water management subsystems is key to evaluating the suitability of a given design.
-Careful consideration of the set of possible thermal and fluidic architectures are necessary to thoroughly explore the system design space.
+Careful consideration of the set of possible thermal and fluidic architectures is necessary to thoroughly explore the system design space.
 At the time of writing, the authors are working on defining the set of full system architectures and component models.
 Details on these will be presented in the final work.
 
